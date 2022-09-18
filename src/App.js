@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Container from './components/container/container.component';
+import Footer from './components/footer/footer.component';
 import Map from './components/Map/map.component';
 import { getAddress } from './utils/axios/axios';
 
@@ -20,6 +21,7 @@ function App() {
     <div>
       <Container setAddressInfo={setAddressInfo} addressInfo={addressInfo} setPosition={setPosition}/>
       <Map position={position} />
+      <Footer />
     </div>
   );
 }
