@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Container from './components/container/container.component';
+import Map from './components/Map/map.component';
+import { getAddress } from './utils/axios/axios';
+
+const INITIAL_ADDRESS_INFO = {
+  ip: '0.0.0.0',
+  city: 'Knowhere',
+  region: 'New Asgard',
+  timezone: '0.00',
+  isp: 'No Provider'
+}
 
 function App() {
+  const [addressInfo, setAddressInfo] = useState(INITIAL_ADDRESS_INFO);
+  const [position,setPosition] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Container setAddressInfo={setAddressInfo} addressInfo={addressInfo} setPosition={setPosition}/>
+      <Map position={position} />
     </div>
   );
 }
